@@ -1,6 +1,6 @@
 const expect = require('expect');
 
-const {generateMessage, generateLocationMessage} = require('./utils/message');
+const {generateMessage, generateLocationMessage} = require('../../utils/message');
 
 describe('Generate message', () => {
     it('should generate correct message object', () => {

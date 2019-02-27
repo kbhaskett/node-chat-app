@@ -16,7 +16,26 @@ function scrollBottom () {
 };
 
 socket.on('connect', function () {
+    var params = getSearchParmsObject();
+    console.log(params);
+    socket.emit('join', params, function(err) {
+        if (err) {
+            alert(err);
+            window.location.href = '/';
+        } else {
+            
+        }
+    });
     console.log("connected to server");
+});
+
+socket.on('updateUserList', function(users) {
+    console.log('users', users);
+    var ol = jQuery('<ol></ol>');
+    users.forEach(function(user) {
+        ol.append(jQuery('<li></li>').text(user));
+    });
+    jQuery('#users').html(ol);
 });
 
 socket.on('disconnect', function() {
